@@ -1,0 +1,269 @@
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 4px 4px 0 0;
+}
+
+.dialog-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+}
+
+.header-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.close-button {
+  color: white;
+}
+
+.close-button mat-icon {
+  font-size: 24px;
+}
+
+/* Dialog Form */
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 4px 24px 0;
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-section {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.time-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.time-field {
+  flex: 1;
+}
+
+.time-arrow {
+  display: flex;
+  align-items: center;
+  color: #667eea;
+  margin-top: 8px;
+}
+
+.time-arrow mat-icon {
+  font-size: 24px;
+}
+
+/* Date Input */
+.date-input {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* Color Options */
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.color-preview {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.color-preview:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.venue-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #667eea;
+}
+
+/* Validation */
+.validation-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f44336;
+  font-size: 13px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-radius: 8px;
+  border-left: 4px solid #f44336;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.validation-message mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Dialog Actions */
+.dialog-actions {
+  padding: 16px 0 0 0;
+  gap: 12px;
+  border-top: 1px solid #e0e0e0;
+  margin: 15px;
+  overflow: hidden;
+}
+
+.cancel-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px;
+  height: 42px;
+  font-weight: 500;
+  border: 2px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.cancel-button:hover {
+  border-color: #bdbdbd;
+  background-color: #f5f5f5;
+}
+
+.create-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 32px;
+  height: 42px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.create-button:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.create-button:not([disabled]):active {
+  transform: translateY(0);
+}
+
+.create-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-button mat-icon,
+.create-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+::ng-deep .mat-mdc-form-field {
+  transition: all 0.3s ease;
+}
+
+::ng-deep .mat-mdc-form-field:focus-within {
+  transform: translateY(-2px);
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: #fafafa;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: #e0e0e0;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled):hover .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled):hover .mdc-notched-outline__notch,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled):hover .mdc-notched-outline__trailing {
+  border-color: #667eea;
+}
+
+/* Dialog Content */
+mat-dialog-content {
+  overflow: hidden !important;
+  max-height: none !important;
+  padding: 0 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* Scrollbar Styling */
+.dialog-form::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dialog-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialog-form::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 2px;
+}
+
+.dialog-form::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.6);
+}

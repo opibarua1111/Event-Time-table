@@ -1,0 +1,99 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>
+    <mat-icon class="header-icon">event</mat-icon>
+    Create New Event
+  </h2>
+  <button mat-icon-button class="close-button" (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <div class="dialog-form">
+    <div class="form-section">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Event Title</mat-label>
+        <input matInput [(ngModel)]="event.title" placeholder="e.g., Team Meeting, Workshop" required>
+        <mat-icon matPrefix>title</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="form-section">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Venue</mat-label>
+        <mat-select [(ngModel)]="event.venueId" required>
+          <mat-option *ngFor="let venue of data.venues" [value]="venue.id">
+            <mat-icon class="venue-icon">place</mat-icon>
+            {{ venue.name }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>location_on</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="form-section">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" [(ngModel)]="event.date" required class="date-input">
+        <mat-icon matPrefix>calendar_today</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="form-section time-section">
+      <mat-form-field appearance="outline" class="time-field">
+        <mat-label>Start Time</mat-label>
+        <mat-select [(ngModel)]="event.startTime" required>
+          <mat-option *ngFor="let time of timeOptions" [value]="time">
+            {{ time }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>schedule</mat-icon>
+      </mat-form-field>
+
+      <div class="time-arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+
+      <mat-form-field appearance="outline" class="time-field">
+        <mat-label>End Time</mat-label>
+        <mat-select [(ngModel)]="event.endTime" required>
+          <mat-option *ngFor="let time of timeOptions" [value]="time">
+            {{ time }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>schedule</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="form-section">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Event Color</mat-label>
+        <mat-select [(ngModel)]="event.color">
+          <mat-option *ngFor="let color of colors" [value]="color.value">
+            <div class="color-option">
+              <span class="color-preview" [style.background-color]="color.value"></span>
+              {{ color.name }}
+            </div>
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>palette</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="validation-message" *ngIf="event.startTime && event.endTime && event.startTime >= event.endTime">
+      <mat-icon>warning</mat-icon>
+      <span>End time must be after start time</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button class="cancel-button" (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+    Cancel
+  </button>
+  <button mat-raised-button color="primary" class="create-button" (click)="onSave()" [disabled]="!isValid()">
+    <mat-icon>check_circle</mat-icon>
+    Create Event
+  </button>
+</mat-dialog-actions>
